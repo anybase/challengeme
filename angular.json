@@ -10,7 +10,11 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
+          "prefix": "app",
           "styleext": "scss"
+        },
+        "@schematics/angular:directive": {
+          "prefix": "app"
         }
       },
       "architect": {
@@ -27,8 +31,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/flag-icon-css/css/flag-icon.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/simple-line-icons/css/simple-line-icons.css",
+              "src/scss/style.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["./node_modules"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -76,7 +86,10 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.scss"
+              "node_modules/flag-icon-css/css/flag-icon.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/simple-line-icons/css/simple-line-icons.css",
+              "src/scss/style.scss"
             ],
             "scripts": [],
             "assets": [
