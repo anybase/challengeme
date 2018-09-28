@@ -20,6 +20,8 @@ import { HeaderComponent } from './containers/header/header.component';
 import { FooterComponent } from './containers/footer/footer.component';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+
 
 
 
@@ -29,7 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     DateInputsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    InputsModule
     
   ],
   declarations: [
@@ -37,6 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ...APP_CONTAINERS,
     HeaderComponent,
     FooterComponent
+    
 
 
   ],

@@ -1,24 +1,17 @@
-<div class="animated fadeIn">
-  <div class="my-4 p-3 bg-white rounded box-shadow">
-    <form>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Input your chalenge!!!</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="thử thách 30 day no fap!!">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<div class="col-md-12">
+    <div class="animated fadeIn row">
+        <div class="my-4 p-3 col-md-3 bg-white rounded box-shadow">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Input your chalenge!!!</label>
+              <input kendoTextBox id="exampleInputEmail1" placeholder="thử thách 30 day no fap!!">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+        </div>
+        <div class="my-4 p-3 col-md-9 bg-white rounded box-shadow">
+            <div *ngIf="timeline.length" class="container-fluid">
+                <horizontal-timeline [timelineElements]="timeline" [showContent]="true" [timelineWrapperWidth]="2000"></horizontal-timeline>
+              </div>
+        
       </div>
-      <div class="form-group">
-        <p>Select a date:</p>
-            <kendo-datepicker
-               
-            ></kendo-datepicker>
-       </div>
-       <div class="form-group">
-        <label >Einde voorverkoop periode</label>
-        <input type="date" name="bday" min="1000-01-01"
-               max="3000-12-31" class="form-control">
-       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
-  
+      
 </div>

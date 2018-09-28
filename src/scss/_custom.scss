@@ -13,31 +13,6 @@ body {
   margin-bottom: 60px; /* Margin bottom by footer height */
 }
 
-@media (max-width: 767.98px) {
-  .offcanvas-collapse {
-    position: fixed;
-    top: 56px; /* Height of navbar */
-    bottom: 0;
-    width: 100%;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    overflow-y: auto;
-    background-color: var(--gray-dark);
-    transition: -webkit-transform .3s ease-in-out;
-    transition: transform .3s ease-in-out;
-    transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
-  }
-  .offcanvas-collapse.open {
-    -webkit-transform: translateX(-1rem);
-    transform: translateX(-1rem); /* Account for horizontal padding on navbar */
-  }
-}
-
-
-
-
 .navbar a {
   padding-top: .75rem;
   padding-bottom: .75rem;
@@ -82,3 +57,4 @@ body {
     padding: 0.5rem 2.5rem;
     margin: 1rem 0;
   }
+  
