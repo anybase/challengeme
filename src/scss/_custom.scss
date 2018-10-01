@@ -13,7 +13,7 @@ body {
   margin-bottom: 60px; /* Margin bottom by footer height */
 }
 
-.navbar a {
+.navbar .nav-link {
   padding-top: .75rem;
   padding-bottom: .75rem;
   font-size: 1rem;
@@ -21,11 +21,11 @@ body {
   
 }
 
-.navbar a:hover {
+.navbar .nav-link:hover {
     color: rgba(255, 255, 255, .5); 
 }
 
-.navbar a .active {
+.navbar .nav-link .active {
   font-weight: 500;
   color: var(--gray-dark);
 }
@@ -57,4 +57,14 @@ body {
     padding: 0.5rem 2.5rem;
     margin: 1rem 0;
   }
-  
+  [data-icon]:before{
+    font-family: 'Simple-Line-Icons';
+    content: attr(data-icon);
+    speak: none;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }

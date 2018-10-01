@@ -9,7 +9,6 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-
 import { TimelineElement } from './timeline-element';
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 

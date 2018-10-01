@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { LoginComponent } from './views/login/login.component';
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
-
+import { AuthService } from '../app/services/auth.service';
 
 export const routes: Routes = [
   {
@@ -20,8 +20,16 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: './views/dashboard/dashboard.module#DashboardModule'
-      }
+        loadChildren: './views/dashboard/dashboard.module#DashboardModule',
+        canActivate: [AuthService]
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+        data: {
+          title: 'Login Page'
+        }
+      },
     ]
 
   }
