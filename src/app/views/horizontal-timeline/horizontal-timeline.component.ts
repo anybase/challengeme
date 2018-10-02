@@ -104,9 +104,14 @@ export class HorizontalTimelineComponent implements AfterViewInit {
   }
 
   private _dateFormat: string = 'dd.MM.yyyy';
+  private _dayFormat: string = 'dd';
+
 
   get dateFormat(): string {
     return this._dateFormat;
+  }
+  get dayFormat(): string {
+    return this._dayFormat;
   }
 
   @Input()
