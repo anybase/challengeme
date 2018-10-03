@@ -6,11 +6,8 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { InputsModule } from '@progress/kendo-angular-inputs';
-import { HorizontalTimelineComponent } from '../horizontal-timeline/horizontal-timeline.component';
-import {ChallengeComponent} from '../challenge/challenge.component';
-import {ChallengeDetailComponent} from '../challenge-detail/challenge-detail.component';
-import {PostComponent} from '../post/post.component'
-import { PostEditorComponent } from '../post-editor/post-editor.component';
+import { ChallengeComponent, ChallengeDetailComponent,PostComponent, PostEditorComponent, HorizontalTimelineComponent } from '@app/shared';
+
 @NgModule({
   imports: [
     FormsModule,

@@ -29,8 +29,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AuthService } from '../app/services/auth.service';
-import { NotificationComponent } from './views/notification/notification.component';
+import { AuthService } from '@app/services';
+import { NotificationComponent } from '@app/shared';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 
 

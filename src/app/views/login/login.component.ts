@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '@app/services'
 import * as firebase from 'firebase/app';
 import * as $ from 'jquery';
 import { NotificationService } from '@progress/kendo-angular-notification';
