@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import * as firebase from 'firebase/app';
 import * as $ from 'jquery';
-import { NotificationService } from '../../services/notification.service';
+import { NotificationService } from '@progress/kendo-angular-notification';
 
 
 @Component({
@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
 
   useremail: string;
   password: string;
-
-  constructor(public authServ: AuthService, private noteSvc: NotificationService) {
+  private hideAfter: number = 2000;
+  constructor(public authServ: AuthService, private notificationService: NotificationService) {
 
   }
 
@@ -41,22 +41,30 @@ export class LoginComponent implements OnInit {
   onSignUp() {
     debugger;
     if (this.useremail === undefined || this.password === undefined) {
-        this.noteSvc.setNotification(
-          'Missing Information',
-          'User name and password are mandatory!'
-        );
-        $('.notification-btn').click();
+      this.notificationService.show({
+        content: 'User name and password are mandatory!',
+        animation: { type: 'fade', duration: 400 },
+        position: { horizontal: 'right', vertical: 'top' },
+        type: { style: 'error', icon: true },
+        hideAfter: this.hideAfter
+      });
     } else if (this.useremail.length < 4) {
-        this.noteSvc.setNotification(
-          'Missing Information',
-          'Invalid Email address entered!'
-        );
+      this.notificationService.show({
+        content: 'Invalid Email address entered!',
+        animation: { type: 'fade', duration: 400 },
+        position: { horizontal: 'right', vertical: 'top' },
+        type: { style: 'error', icon: true },
+        hideAfter: this.hideAfter
+      });
       return;
     } else if (this.password.length < 4) {
-      this.noteSvc.setNotification(
-        'Missing Information',
-        'Invalid password entered!'
-        );
+      this.notificationService.show({
+        content: 'Invalid password entered!',
+        animation: { type: 'fade', duration: 400 },
+        position: { horizontal: 'right', vertical: 'top' },
+        type: { style: 'error', icon: true },
+        hideAfter: this.hideAfter
+      });
       return;
     } else {
       // Sign in with email and pass.
@@ -68,17 +76,21 @@ export class LoginComponent implements OnInit {
         const errorMessage = error.message;
 
         if (errorCode === 'auth/weak-password') {
-          this.noteSvc.setNotification(
-            'Sign Up Failed',
-            'Password entered is too weak!'
-          );
-          $('.notification-btn').click();
+          this.notificationService.show({
+            content: 'Password entered is too weak!',
+            animation: { type: 'fade', duration: 400 },
+            position: { horizontal: 'right', vertical: 'top' },
+            type: { style: 'error', icon: true },
+            hideAfter: this.hideAfter
+          });
         } else {
-          this.noteSvc.setNotification(
-            'Error during signup',
-            errorMessage
-          );
-          $('.notification-btn').click();
+          this.notificationService.show({
+            content: 'Error during signup',
+            animation: { type: 'fade', duration: 400 },
+            position: { horizontal: 'right', vertical: 'top' },
+            type: { style: 'error', icon: true },
+            hideAfter: this.hideAfter
+          });
         }
         console.log(error);
       });
@@ -86,30 +98,24 @@ export class LoginComponent implements OnInit {
   }
 
   onSignIn() {
-    if (firebase.auth().currentUser) {
-      // [START signout]
-        firebase.auth().signOut();
-
-        $('#quickstart-sign-in').removeClass('btn-danger');
-        $('#quickstart-sign-in').addClass('btn-primary');
-        $('#quickstart-sign-in').css('float', 'left');
-
-        document.getElementById('login-section').hidden = false;
-      // [END signout]
-    } else {
+   
       if (this.useremail === undefined) {
-        this.noteSvc.setNotification(
-          'Invalid Information',
-          'Please enter valid user name!'
-        );
-        $('.notification-btn').click();
+        this.notificationService.show({
+          content: 'Please enter valid user name!',
+          animation: { type: 'fade', duration: 400 },
+          position: { horizontal: 'right', vertical: 'top' },
+          type: { style: 'error', icon: true },
+          hideAfter: this.hideAfter
+        });
         return;
       } else if (this.password === undefined) {
-        this.noteSvc.setNotification(
-          'Invalid Information',
-          'Please enter valid password!'
-        );
-        $('.notification-btn').click();
+        this.notificationService.show({
+          content: 'Please enter valid password!',
+          animation: { type: 'fade', duration: 400 },
+          position: { horizontal: 'right', vertical: 'top' },
+          type: { style: 'error', icon: true },
+          hideAfter: this.hideAfter
+        });
         return;
       }
       const email = this.useremail;
@@ -127,18 +133,25 @@ export class LoginComponent implements OnInit {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
-        this.noteSvc.setNotification(
-          'Error during Login',
-           error.message
-        );
-        $('.notification-btn').click();
+        this.notificationService.show({
+          content: 'Error during Login',
+          animation: { type: 'fade', duration: 400 },
+          position: { horizontal: 'right', vertical: 'top' },
+          type: { style: 'error', icon: true },
+          hideAfter: this.hideAfter
+        });
       });
       // [END authwithemail]
-    }
-    $('#quickstart-sign-in').removeAttr('disabled');
+
     // document.getElementById('quickstart-sign-in').disabled = true;
   }
-
+  onSignOut(){
+    if (firebase.auth().currentUser) {
+      // [START signout]
+        firebase.auth().signOut();
+      // [END signout]
+    }
+  }
   onGHubLogin() {
     this.authServ.loginWithGHub();
 
@@ -148,7 +161,6 @@ export class LoginComponent implements OnInit {
 
     firebase.auth().onAuthStateChanged((user) => {
         // [START_EXCLUDE silent]
-      $('#quickstart-sign-in').removeAttr('disabled');
      // document.getElementById('quickstart-verify-email').disabled = true;
       // [END_EXCLUDE]
       if (user) {
@@ -161,25 +173,33 @@ export class LoginComponent implements OnInit {
         const uid = user.uid;
         const providerData = user.providerData;
         // [START_EXCLUDE]
-        document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-        $('#quickstart-sign-in').removeClass('btn-primary');
-        $('#quickstart-sign-in').addClass('btn-danger');
-        $('#quickstart-sign-in').css('float', 'right');
-        document.getElementById('login-section').hidden = true;
-
+        this.loggedIn = true;
         if (!emailVerified) {
-          $('#quickstart-sign-in').removeAttr('disabled');
+          
         }
+        this.notificationService.show({
+          content: 'Welcome to the board!!',
+          animation: { type: 'fade', duration: 400 },
+          position: { horizontal: 'right', vertical: 'top' },
+          type: { style: 'success', icon: true },
+          hideAfter: this.hideAfter
+        });
         // [END_EXCLUDE]
       } else {
         // User is signed out.
         // [START_EXCLUDE]
-        document.getElementById('quickstart-sign-in').textContent = 'Sign in';
-        document.getElementById('quickstart-sign-in').setAttribute('style', 'float: left');
+        this.loggedIn = false;
+        this.notificationService.show({
+          content: 'We will miss you!!',
+          animation: { type: 'fade', duration: 400 },
+          position: { horizontal: 'right', vertical: 'top' },
+          type: { style: 'success', icon: true },
+          hideAfter: this.hideAfter
+        });
         // [END_EXCLUDE]
       }
       // [START_EXCLUDE silent]
-      $('#quickstart-sign-in').removeAttr('disabled');
+      
       // [END_EXCLUDE]
     });
   }
@@ -187,11 +207,13 @@ export class LoginComponent implements OnInit {
   onSendPasswordReset() {
 
       firebase.auth().sendPasswordResetEmail(this.useremail).then(() => {
-        this.noteSvc.setNotification(
-          'Email Sent',
-          'Email sent with instructions. Please follow'
-        );
-        $('.notification-btn').click();
+        this.notificationService.show({
+          content: 'Email sent with instructions. Please follow',
+          animation: { type: 'fade', duration: 400 },
+          position: { horizontal: 'right', vertical: 'top' },
+          type: { style: 'info', icon: true },
+          hideAfter: this.hideAfter
+        });
         // [END_EXCLUDE]
       }).catch((error) => {
         // Handle Errors here.
@@ -199,24 +221,35 @@ export class LoginComponent implements OnInit {
         const errorMessage = error.message;
         // [START_EXCLUDE]
         if (errorCode === 'auth/invalid-email') {
-          this.noteSvc.setNotification(
-            'Error during password reset',
-            'Invalid Email Id provided!'
-          );
-          $('.notification-btn').click();
+          this.notificationService.show({
+            content: 'Invalid Email Id provided!',
+            animation: { type: 'fade', duration: 400 },
+            position: { horizontal: 'right', vertical: 'top' },
+            type: { style: 'error', icon: true },
+            hideAfter: this.hideAfter
+          });
+
         } else if (errorCode === 'auth/user-not-found') {
-          this.noteSvc.setNotification(
-            'Error during password reset',
-            'Sorry. User not found.'
-          );
-          $('.notification-btn').click();
+          if (errorCode === 'auth/invalid-email') {
+            this.notificationService.show({
+              content: 'Sorry. User not found.',
+              animation: { type: 'fade', duration: 400 },
+              position: { horizontal: 'right', vertical: 'top' },
+              type: { style: 'error', icon: true },
+              hideAfter: this.hideAfter
+            });
         } else {
-          this.noteSvc.setNotification(
-            'Error during password reset',
-            error
-          );
-          $('.notification-btn').click();
+          if (errorCode === 'auth/invalid-email') {
+            this.notificationService.show({
+              content: 'Error during password reset',
+              animation: { type: 'fade', duration: 400 },
+              position: { horizontal: 'right', vertical: 'top' },
+              type: { style: 'error', icon: true },
+              hideAfter: this.hideAfter
+            });
         }
+      }
+    }
 
       });
   }

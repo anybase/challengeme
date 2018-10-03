@@ -31,6 +31,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from '../app/services/auth.service';
 import { NotificationComponent } from './views/notification/notification.component';
+import { NotificationModule } from '@progress/kendo-angular-notification';
+
 
 
 
@@ -46,7 +48,8 @@ import { NotificationComponent } from './views/notification/notification.compone
     AngularFireStorageModule,
     FormsModule,
     // To initialize AngularFire
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    NotificationModule
     
     
   ],
