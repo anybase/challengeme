@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TimelineElement } from '../horizontal-timeline/timeline-element';
-import {PostComponent} from '../post/post.component'
+
 
 @Component({
   selector: 'app-challenge-detail',
@@ -14,18 +13,10 @@ export class ChallengeDetailComponent implements OnInit {
   ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam 
   quisquam, quae, temporibus dolores porro doloribus.`;
 
-  timeline: TimelineElement[] = [];
+
   constructor() { }
 
   ngOnInit() {
-    
-      this.timeline = [
-    { caption: '16 Jan', date: new Date(2014, 1, 16),selected: true, title: 'Horizontal Timeline', content: this.content },
-    { caption: '17 Jan', date: new Date(2014, 1, 17), title: 'Horizontal Timeline', content: this.content },
-    { caption: '17 Jan', date: new Date(2014, 1, 19), title: 'Horizontal Timeline', content: this.content },
-    { caption: '28 Feb', date: new Date(2014, 2, 28), title: 'Status#1', content: this.content }
-    ];
-
   }
 
 }

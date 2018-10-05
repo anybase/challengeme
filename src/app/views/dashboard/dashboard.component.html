@@ -1,13 +1,13 @@
 <div class="col-md-12">
     <div class="animated fadeIn row">
         <div class="p-3 col-md-3 list-group">
-            <app-challenge></app-challenge>
-            <app-challenge></app-challenge>
-            <app-challenge></app-challenge>
-            <app-challenge></app-challenge>
+            <app-challenge *ngFor="let item of challenges; let index = index" [challenge]="item" (selectedItem)="selectedItem(item)"></app-challenge>
         </div>
         <div class="my-4 p-3 col-md-9 bg-white rounded box-shadow">
-           <app-challenge-detail></app-challenge-detail>
+                <div *ngIf="timeline.length" class="container-fluid">
+                        <horizontal-timeline [timelineElements]="timeline" [showContent]="true" [timelineWrapperWidth]="2000"></horizontal-timeline>          
+                </div>
+                    
         
       </div>
       
