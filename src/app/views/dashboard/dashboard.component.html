@@ -1,7 +1,14 @@
 <div class="col-md-12">
     <div class="animated fadeIn row">
         <div class="p-3 col-md-3 list-group">
-            <app-challenge *ngFor="let item of challenges; let index = index" [challenge]="item" (selectedItem)="selectedItem(item)"></app-challenge>
+            <div @list class="list-container">
+                    <button  class="btn btn-light" (click)="pushItem()">Add item</button> 
+                    <button  class="btn btn-light" (click)="removeItem()">Remove item</button>
+                    <div @items class="box" 
+                      *ngFor="let item of challenges; let i=index;">
+                      <app-challenge [challenge]="item" (selectedItem)="selectedItem(item)"></app-challenge>
+                    </div>
+                  </div>
         </div>
         <div class="my-4 p-3 col-md-9 bg-white rounded box-shadow">
                 <div *ngIf="timeline.length" class="container-fluid">

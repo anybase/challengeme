@@ -104,7 +104,7 @@ export class HorizontalTimelineComponent implements AfterViewInit {
   }
 
   private _dateFormat: string = 'dd.MM.yyyy';
-  private _dayFormat: string = 'dd';
+  private _dayFormat: string = 'dd-MMM';
 
 
   get dateFormat(): string {
@@ -295,8 +295,10 @@ export class HorizontalTimelineComponent implements AfterViewInit {
     timeSpanNorm = Math.round(timeSpanNorm) + 4;
     this.eventsWrapperWidth = timeSpanNorm * width;
     let aHref = this.eventsWrapper.nativeElement.querySelectorAll('a.selected')[0];
-    this.updateFilling(aHref);
-    this.updateTimelinePosition(aHref);
+    if(aHref != undefined){
+      this.updateFilling(aHref);
+      this.updateTimelinePosition(aHref);
+    }
     return this.eventsWrapperWidth;
   }
 
@@ -322,7 +324,10 @@ export class HorizontalTimelineComponent implements AfterViewInit {
           break;
         }
       }
-      this.initTimeline(this._timelineElements);
+      setTimeout(() => {
+        this.initTimeline(this._timelineElements);
+      }, 1000);
+      
     }
     this._cdr.detectChanges();
   }
