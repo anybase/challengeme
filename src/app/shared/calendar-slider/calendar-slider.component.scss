@@ -1,0 +1,71 @@
+/* Styles go here */
+
+.calendar-slider-actions {
+    height: 75px;
+    /*background-color: purple;*/
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .slider-prev, .slider-next {
+    /*background-color: yellow;*/
+    width: 75px;
+    height: 75px;
+    text-align: center;
+    font-size: 40px;
+    line-height: 95px;
+    color: #ddd;
+    cursor: pointer;
+  }
+  
+  .slider-next {
+    right: 0;
+    left: auto;  
+  }
+  
+  .slider-clip-container {
+    top: 0;
+    width: 560px;
+    overflow: hidden;
+    display: inline-block;  
+  }
+  
+  .slider-clip {
+    width: 1995px;
+    height: 95px;
+  }
+  
+  .slides, .slide > .radio, .slide > .radio > input {
+    padding: 0;
+    margin: 0;
+  }
+  
+  li.slide {
+    float: left;
+    list-style: none;
+    margin: 10px;
+  }
+  
+  li.slide > .radio > input {
+    display: none; 
+  }
+  
+  li.slide > .radio > .btn {
+    height: 60px;
+    width: 60px;
+    overflow: hidden;
+    padding: 0;
+    font-size: 14px;
+    border-radius: 50%;
+  }
+  
+  li.slide > .radio > .btn > strong {
+    display: block;
+    font-size: 25px;
+    margin-bottom: -5px;
+  }
+  
+  li.slide > .radio > .selected + .btn{
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+  }

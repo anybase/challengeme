@@ -7,11 +7,11 @@
           </div>
     
           <div class="from-group">
-              <textarea class="form-control textarea-post-editor" rows="3" placeholder="What are you doing today?"></textarea>
+              <textarea class="form-control textarea-post-editor" rows="3" placeholder="What are you doing today?" [(ngModel)]="post.content"></textarea>
           </div>
           <ul class="list-inline d-sm-flex my-0">
               <li class="list-inline-item ml-auto">
-                  <button type="button" class="btn btn-primary">Post</button>
+                  <button type="button" (click)="onSubmitClick()" class="btn btn-primary">Post</button>
               </li>
             </ul>
         </div>

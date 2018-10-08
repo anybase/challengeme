@@ -11,9 +11,13 @@
                   </div>
         </div>
         <div class="my-4 p-3 col-md-9 bg-white rounded box-shadow">
-                <div *ngIf="timeline.length" class="container-fluid">
-                        <horizontal-timeline [timelineElements]="timeline" [showContent]="true" [timelineWrapperWidth]="2000"></horizontal-timeline>          
+                <app-calendar-slider></app-calendar-slider>
+                <div *ngIf="timeline.length else blank" class="container-fluid">
+                        <app-challenge-detail></app-challenge-detail>         
                 </div>
+                <ng-template #blank>
+                        There're nothing to show :(
+                </ng-template>
                     
         
       </div>

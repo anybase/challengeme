@@ -1,0 +1,23 @@
+<div class="calendar-slider-actions d-flex justify-content-between" [ngClass]="{ 'stagger': stagger }">
+    <a class="slider-prev" (click)="prevWeek()">
+      <span class="glyphicon glyphicon-menu-left" data-icon="&#xe07a;"></span>
+    </a>
+    <div class="slider-clip-container">
+      <div class="slider-clip slide-direction-{{slideDirection}}">
+        <ul @list class="slides">
+          <li @items class="slide" *ngFor="let date of dates;">
+            <div class="radio">
+              <input type="radio" name="group-days" id="field-{{date.weekDay | lowercase}}" [value]="selectedDate" [ngClass]="{selected: selectedDate===date.date}"
+              />
+              <label class="btn btn-light radio-label" for="field-{{date.weekDay | lowercase}}" (click)="selectDate(date)">
+                <strong>{{date.weekDay}}</strong> {{date.shortDate}}
+              </label>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <a class="slider-next" (click)="nextWeek()">
+      <span class="glyphicon glyphicon-menu-right" data-icon="&#xe079;"></span>
+    </a>
+  </div>

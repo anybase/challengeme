@@ -1,3 +1,9 @@
-<div *ngIf="timeline.length" class="container-fluid">
-    <horizontal-timeline [timelineElements]="timeline" [showContent]="true" [timelineWrapperWidth]="2000"></horizontal-timeline>          
+<div class="row">
+        <app-post-editor class="post-editor" [post]="post" (submittedPost)="submittedPost(post)"></app-post-editor>
+        <div @list class="list-container">
+                <div @items class="box" 
+                  *ngFor="let item of posts; let i=index;">
+                  <app-post class="post-editor" [post]="item"></app-post>
+                </div>
+        </div>
 </div>
