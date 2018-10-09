@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {DayItem} from '@app/models'
 import * as moment from 'moment'; // add this 1 of 4
 import { trigger,style,transition,animate,query as q,keyframes,stagger, animateChild } from '@angular/animations';
 const query = (s,a,o={optional:true})=>q(s,a,o);
@@ -34,7 +35,7 @@ const query = (s,a,o={optional:true})=>q(s,a,o);
 })
 export class CalendarSliderComponent implements OnInit {
   stagger = true;
-  dates = [];
+  dates: DayItem[]  = [];
   slideDirection = 'left';
   selectedDate = moment().startOf('day').format();
   weekOfYear: any;
@@ -43,9 +44,11 @@ export class CalendarSliderComponent implements OnInit {
   ngOnInit() {
     this._changeDisplayedWeek(0);
   }
-  selectDate = function (date) {
+  @Output() selectedItem: EventEmitter<DayItem>  = new EventEmitter();
 
+  selectDate(date: DayItem) {
    this.selectedDate = date.date;
+   this.selectedItem.emit(date);
   };
 
   nextWeek = function () {
@@ -63,16 +66,27 @@ export class CalendarSliderComponent implements OnInit {
     this.selectedDate = selectedDate.format();
     this.weekOfYear = selectedDate.format('WW');
     this.dates = this._expandWeek(selectedDate);
+    
+    this.selectedItem.emit({
+      weekDay: selectedDate.format('dd'),
+      shortDate: selectedDate.format('DD.MM'),
+      date: selectedDate.format(),
+      selected : false,
+      status : 1
+    });
+
   }
 
    _expandWeek(startDate) {
-    var dates = [];
+    var dates : DayItem[]  = [];
     var dayOfWeek = moment(startDate).startOf('week');
     for (var i = 0; i < 7; i++) {
       dates.push({
         weekDay: dayOfWeek.format('dd'),
         shortDate: dayOfWeek.format('DD.MM'),
-        date: dayOfWeek.format()
+        date: dayOfWeek.format(),
+        selected : false,
+        status : 1
       });
       dayOfWeek.add(1, 'd');
     }

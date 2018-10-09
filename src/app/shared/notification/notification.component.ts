@@ -1,7 +1,7 @@
 import { Component,
   OnInit, Output,
   EventEmitter } from '@angular/core';
-import { NotificationService } from '../../services/notification.service';
+import { NotificationService } from '@app/services/notification.service';
 import { Subscription } from 'rxjs';
 
 @Component({
