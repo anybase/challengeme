@@ -6,7 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { InputsModule } from '@progress/kendo-angular-inputs';
-import { ChallengeComponent, ChallengeDetailComponent,PostComponent, PostEditorComponent, HorizontalTimelineComponent, CalendarSliderComponent } from '@app/shared';
+import { ChallengeComponent, ChallengeDetailComponent,PostComponent, PostEditorComponent, HorizontalTimelineComponent, CalendarSliderComponent, ChallengeSummaryComponent } from '@app/shared';
 
 @NgModule({
   imports: [
@@ -24,6 +24,7 @@ import { ChallengeComponent, ChallengeDetailComponent,PostComponent, PostEditorC
     ChallengeDetailComponent, 
     PostComponent,
     PostEditorComponent,
-    CalendarSliderComponent ]
+    CalendarSliderComponent,
+    ChallengeSummaryComponent ]
 })
 export class DashboardModule { }

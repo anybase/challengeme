@@ -1,46 +1,86 @@
 <div class="col-md-12">
-    <div class="animated fadeIn row">
-        <div class="p-3 col-md-3 list-group">
-            <div @list class="list-container">
-                    <button  class="btn btn-light"  data-toggle="modal" data-target="#exampleModalLong">Add item</button> 
-                    <button  class="btn btn-light" (click)="removeItem()">Remove item</button>
-                    <div @items class="box" 
-                      *ngFor="let item of challenges; let i=index;">
-                      <app-challenge [challenge]="item" (selectedItem)="selectedChallengeItem(item)"></app-challenge>
-                    </div>
-                  </div>
-        </div>
-        <div class="my-4 p-3 col-md-9 bg-white rounded box-shadow">
-                <app-calendar-slider (selectedItem)="selectedDateItem($event)"></app-calendar-slider>
-                <div *ngIf="posts.length else blank" class="container-fluid">
-                <app-challenge-detail [posts]="posts"></app-challenge-detail>         
+        <div class="animated fadeIn row">
+                <div class="p-3 col-md-3 list-group">
+                        <div @list class="list-container">
+                                <button class="btn btn-light" data-toggle="modal" data-target="#exampleModalLong">Add
+                                        item</button>
+                                <button class="btn btn-light" (click)="removeItem()">Remove item</button>
+                                <div @items class="box" *ngFor="let item of challenges; let i=index;">
+                                        <app-challenge [challenge]="item" (selectedItem)="selectedChallengeItem(item)"></app-challenge>
+                                </div>
+                        </div>
                 </div>
-                <ng-template #blank>
-                        There're nothing to show :(
-                </ng-template>
-                    
-        
-      </div>
-      
-</div>
+                <div class="p-3 col-md-9 right-container">
+                        <ul class="nav nav-pills">
+                                <li ><a class="btn btn-light" data-toggle="pill" href="#home">Daily</a></li>
+                                <li class="active"><a data-toggle="pill" class="btn btn-light active" href="#menu1">Summary</a></li>
+                        </ul>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      ...
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="pushItem()">Save changes</button>
-                    </div>
-                  </div>
+                        <div class="tab-content">
+                                <div id="home" class="tab-pane ">
+                                        <app-calendar-slider (selectedItem)="selectedDateItem($event)"></app-calendar-slider>
+                                        <div *ngIf="posts.length else blank" class="container-fluid">
+                                                <app-challenge-detail [posts]="posts"></app-challenge-detail>
+                                        </div>
+                                        <ng-template #blank>
+                                                There're nothing to show :(
+                                        </ng-template>
+                                </div>
+                                <div id="menu1" class="tab-pane active">
+                                        <app-challenge-summary ></app-challenge-summary>
+                                </div>
+                        </div>
                 </div>
-              </div>
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                                <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                                <div class="modal-body">
+                                        <form>
+                                                <div class="form-group">
+                                                        <label for="exampleInputEmail1">Subject</label>
+                                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                                                aria-describedby="emailHelp" placeholder="Enter email">
+                                                        <small id="emailHelp" class="form-text text-muted">We'll never
+                                                                share your email with anyone else.</small>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="exampleInputPassword1">Start time</label>
+                                                        <input type="text" class="form-control" id="exampleInputPassword1"
+                                                                placeholder="Password">
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="exampleInputPassword1">End time</label>
+                                                        <input type="text" class="form-control" id="exampleInputPassword1"
+                                                                placeholder="Password">
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="exampleInputPassword1">Your target</label>
+                                                        <input type="text" class="form-control" id="exampleInputPassword1"
+                                                                placeholder="Password">
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">Example textarea</label>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                                rows="3"></textarea>
+                                                </div>
+                                        </form>
+                                </div>
+                                <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="pushItem()">Save
+                                                changes</button>
+                                </div>
+                        </div>
+                </div>
+        </div>
