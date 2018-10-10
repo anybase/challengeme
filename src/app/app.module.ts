@@ -32,6 +32,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from '@app/services';
 import { NotificationComponent } from '@app/shared';
 import { NotificationModule } from '@progress/kendo-angular-notification';
+import { ShowAuthedDirective } from './shared/show-authed.directive';
 
 
 
@@ -59,7 +60,8 @@ import { NotificationModule } from '@progress/kendo-angular-notification';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    NotificationComponent
+    NotificationComponent,
+    ShowAuthedDirective
     
 
 

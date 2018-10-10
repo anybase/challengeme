@@ -4,7 +4,7 @@ import { AuthService } from '@app/services'
 import * as firebase from 'firebase/app';
 import * as $ from 'jquery';
 import { NotificationService } from '@progress/kendo-angular-notification';
-
+import { Router} from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   useremail: string;
   password: string;
   private hideAfter: number = 2000;
-  constructor(public authServ: AuthService, private notificationService: NotificationService) {
+  constructor(public authServ: AuthService, private notificationService: NotificationService, private router: Router) {
 
   }
 
@@ -184,6 +184,7 @@ export class LoginComponent implements OnInit {
           type: { style: 'success', icon: true },
           hideAfter: this.hideAfter
         });
+        this.router.navigate(['/'])
         // [END_EXCLUDE]
       } else {
         // User is signed out.
@@ -196,6 +197,7 @@ export class LoginComponent implements OnInit {
           type: { style: 'success', icon: true },
           hideAfter: this.hideAfter
         });
+        this.router.navigate(['/login'])
         // [END_EXCLUDE]
       }
       // [START_EXCLUDE silent]

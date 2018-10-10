@@ -15,7 +15,7 @@ export class AuthService {
   constructor(public fireAuth: AngularFireAuth) {
     this.user = fireAuth.authState;
   }
-
+  public isAuthenticated = this.fireAuth.authState.pipe(map(user => user !== null));
   canActivate(): Observable<boolean> {
     return this.fireAuth.authState.pipe(map(user => user !== null));
   }

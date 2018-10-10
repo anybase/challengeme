@@ -6,3 +6,4 @@ export * from './notification';
 export * from './timeline';
 export * from './calendar-slider'
 export * from './challenge-summary'
+export * from './show-authed.directive'
