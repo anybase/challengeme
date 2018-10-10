@@ -1,0 +1,15 @@
+<div class="timeline">
+    <div class="timeline__group" *ngFor="let timelineItem of timelines;">
+      <span class="timeline__yearmonth">{{timelineItem.month}}</span>
+      <div class="timeline__box" *ngFor="let post of timelineItem.posts;">
+        <div class="timeline__date">
+          <span class="timeline__day">{{post.day}}</span>
+        </div>
+        <div class="timeline__post box-shadow">
+          <div class="timeline__content">
+              {{post.content}}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

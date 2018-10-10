@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Challenge, Post, DayItem } from '@app/models'
+import { Challenge, Post, DayItem,Timeline } from '@app/models'
 import { trigger, style, transition, animate, query as q, keyframes, stagger, animateChild } from '@angular/animations';
 const query = (s, a, o = { optional: true }) => q(s, a, o);
 @Component({
@@ -32,6 +32,7 @@ const query = (s, a, o = { optional: true }) => q(s, a, o);
 })
 
 export class DashboardComponent implements OnInit {
+  timelines: Timeline[] =[]
   challenges: Challenge[] = [];
   posts: Post[] = [];
   list = [1, 2, 3, 4];
@@ -53,6 +54,16 @@ export class DashboardComponent implements OnInit {
       { content: this.content, ownerAvatar: "", ownerId: 0, ownerName: "Giang", createdDate: new Date() },
       { content: this.content, ownerAvatar: "", ownerId: 0, ownerName: "Giang", createdDate: new Date() }
     ];
+    this.timelines = [];
+    var timeline = {
+      month: "Oct",
+      posts: [{day: "1", content: this.content},
+      {day: "2", content: this.content},
+      {day: "3", content: this.content},
+      {day: "4", content: this.content}
+      ]
+    }
+    this.timelines.push(timeline);
   }
   pushItem() {
     this.challenges.push({ caption: '28 Feb', startDate: new Date(2014, 5, 28), title: 'Status#5', content: this.content, endDate: new Date(2014, 6, 16) });
@@ -77,6 +88,16 @@ export class DashboardComponent implements OnInit {
       { content: this.content, ownerAvatar: "", ownerId: 0, ownerName: "Giang", createdDate: new Date() },
       { content: this.content, ownerAvatar: "", ownerId: 0, ownerName: "Giang", createdDate: new Date() }
     ];
+    this.timelines = [];
+    var timeline = {
+      month: "Oct",
+      posts: [{day: "1", content: this.content},
+      {day: "2", content: this.content},
+      {day: "3", content: this.content},
+      {day: "4", content: this.content}
+      ]
+    }
+    this.timelines.push(timeline);
   }
   selectedDateItem(selectedItem) {
     console.log(selectedItem);
