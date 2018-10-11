@@ -29,7 +29,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AuthService } from '@app/services';
+import { AuthService, AuthGuard } from '@app/services';
 import { NotificationComponent } from '@app/shared';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import { ShowAuthedDirective } from './shared/show-authed.directive';
@@ -70,7 +70,7 @@ import { ShowAuthedDirective } from './shared/show-authed.directive';
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
   },
-  AuthService],
+  AuthService, AuthGuard],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -7,8 +7,12 @@
               <div class="card p-4">
                 <div class="card-body">
                   <form>
-                    <h1>Login</h1>
+                    <h1>Sign in</h1>
                     <p class="text-muted">Sign In to your account</p>
+                    <div class="text-center social-btn">
+                        <a href="#" class="btn btn-dark btn-block" (click)="onAnonymousLogin()"><i class="fa fa-google"></i> Log in <b>Anonymously</b></a>
+                    </div>
+                <div class="or-seperator"><i>or</i></div>
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="icon-user"></i></span>
@@ -26,7 +30,7 @@
                         <button type="button"  (click)="onSignIn()"  id="quickstart-sign-in" class="btn btn-primary px-3">Login</button>
                       </div>
                       <div class="col-6 text-right">
-                        <button type="button" class="btn btn-link px-0">Signup</button>
+                        <button type="button" class="btn btn-link px-0">Reset password</button>
                       </div>
                     </div>
                   </form>

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './views/login/login.component';
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
-import { AuthService } from '../app/services/auth.service';
+import { AuthGuard } from '@app/services';
 
 export const routes: Routes = [
   {
@@ -21,7 +21,7 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: './views/dashboard/dashboard.module#DashboardModule',
-        canActivate: [AuthService]
+        canActivate: [AuthGuard]
       },
       {
         path: 'login',

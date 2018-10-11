@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '@app/services'
-import * as firebase from 'firebase/app';
 import * as $ from 'jquery';
 import { NotificationService } from '@progress/kendo-angular-notification';
 import { Router} from '@angular/router'
@@ -37,7 +36,22 @@ export class LoginComponent implements OnInit {
   onFBLogin() {
     this.authServ.loginWithFB();
   }
-
+  
+  onAnonymousLogin(){
+    this.authServ.onAnonymousLogin().catch(function(error) {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      this.notificationService.show({
+        content: 'Error during Login',
+        animation: { type: 'fade', duration: 400 },
+        position: { horizontal: 'right', vertical: 'top' },
+        type: { style: 'error', icon: true },
+        hideAfter: this.hideAfter
+      });
+      // ...
+    });
+  }
   onSignUp() {
     debugger;
     if (this.useremail === undefined || this.password === undefined) {
@@ -69,7 +83,7 @@ export class LoginComponent implements OnInit {
     } else {
       // Sign in with email and pass.
       // [START createwithemail]
-      firebase.auth().createUserWithEmailAndPassword(this.useremail, this.password)
+     this.authServ.signUp(this.useremail, this.password)
       .catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
@@ -120,16 +134,7 @@ export class LoginComponent implements OnInit {
       }
       const email = this.useremail;
       const pass = this.password;
-      firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-      .then(() => {
-        // Existing and future Auth states are now persisted in the current
-        // session only. Closing the window would clear any existing state even
-        // if a user forgets to sign out.
-        // ...
-        // New sign-in will be persisted with session persistence.
-        return firebase.auth().signInWithEmailAndPassword(email, pass);
-      })
-      .catch((error) => {
+      this.authServ.signIn(email,pass).catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -140,17 +145,13 @@ export class LoginComponent implements OnInit {
           type: { style: 'error', icon: true },
           hideAfter: this.hideAfter
         });
-      });
+      });;
       // [END authwithemail]
 
     // document.getElementById('quickstart-sign-in').disabled = true;
   }
   onSignOut(){
-    if (firebase.auth().currentUser) {
-      // [START signout]
-        firebase.auth().signOut();
-      // [END signout]
-    }
+    this.authServ.onSignOut();
   }
   onGHubLogin() {
     this.authServ.loginWithGHub();
@@ -159,7 +160,7 @@ export class LoginComponent implements OnInit {
 
   authChanged() {
 
-    firebase.auth().onAuthStateChanged((user) => {
+   this.authServ.onAuthChanged((user) => {
         // [START_EXCLUDE silent]
      // document.getElementById('quickstart-verify-email').disabled = true;
       // [END_EXCLUDE]
@@ -177,26 +178,12 @@ export class LoginComponent implements OnInit {
         if (!emailVerified) {
           
         }
-        this.notificationService.show({
-          content: 'Welcome to the board!!',
-          animation: { type: 'fade', duration: 400 },
-          position: { horizontal: 'right', vertical: 'top' },
-          type: { style: 'success', icon: true },
-          hideAfter: this.hideAfter
-        });
         this.router.navigate(['/'])
         // [END_EXCLUDE]
       } else {
         // User is signed out.
         // [START_EXCLUDE]
         this.loggedIn = false;
-        this.notificationService.show({
-          content: 'We will miss you!!',
-          animation: { type: 'fade', duration: 400 },
-          position: { horizontal: 'right', vertical: 'top' },
-          type: { style: 'success', icon: true },
-          hideAfter: this.hideAfter
-        });
         this.router.navigate(['/login'])
         // [END_EXCLUDE]
       }
@@ -208,7 +195,7 @@ export class LoginComponent implements OnInit {
 
   onSendPasswordReset() {
 
-      firebase.auth().sendPasswordResetEmail(this.useremail).then(() => {
+     this.authServ.onSendPasswordReset(this.useremail).then(() => {
         this.notificationService.show({
           content: 'Email sent with instructions. Please follow',
           animation: { type: 'fade', duration: 400 },
