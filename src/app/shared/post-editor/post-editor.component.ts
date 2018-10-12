@@ -10,17 +10,10 @@ export class PostEditorComponent implements OnInit {
   constructor(private notificationService: NotificationService) { }
   private hideAfter: number = 2000;
   ngOnInit() {
+    this.post = new Post();
   }
-  private _post: Post;
+  post: Post
 
-  get post(): Post {
-    return this._post;
-  }
-
-  @Input()
-  set post(value: Post) {
-    this._post = value;
-  }
   @Output() submittedPost = new EventEmitter<Post>();
 
   onSubmitClick() {

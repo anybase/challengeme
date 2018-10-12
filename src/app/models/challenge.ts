@@ -1,4 +1,5 @@
 export class Challenge {
+    id: number;
     caption: string;
     startDate: Date;
     endDate: Date;

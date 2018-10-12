@@ -12,13 +12,14 @@
                 </div>
                 <div class="p-3 col-md-9 right-container">
                         <ul class="nav nav-pills">
-                                <li ><a class="btn btn-light" data-toggle="pill" href="#home">Daily</a></li>
-                                <li class="active"><a data-toggle="pill" class="btn btn-light active" href="#menu1">Summary</a></li>
+                                <li ><a class="btn btn-light" data-toggle="pill" href="#home" [ngClass]="{ 'active':activeTab==='Daily'}" (click)="onSelectTab('Daily')">Daily</a></li>
+                                <li><a data-toggle="pill" class="btn btn-light" href="#menu1" [ngClass]="{ 'active':activeTab==='Summary'}" (click)="onSelectTab('Summary')">Summary</a></li>
                         </ul>
 
                         <div class="tab-content">
-                                <div id="home" class="tab-pane ">
+                                <div id="home" class="tab-pane " [ngClass]="{ 'active':activeTab==='Daily'}">
                                         <app-calendar-slider (selectedItem)="selectedDateItem($event)"></app-calendar-slider>
+                                        <app-post-editor class="post-editor" (submittedPost)="submittedPost($event)"></app-post-editor>
                                         <div *ngIf="posts.length else blank" class="container-fluid">
                                                 <app-challenge-detail [posts]="posts"></app-challenge-detail>
                                         </div>
@@ -26,8 +27,8 @@
                                                 There're nothing to show :(
                                         </ng-template>
                                 </div>
-                                <div id="menu1" class="tab-pane active">
-                                        <app-challenge-summary [timelines]="timelines"></app-challenge-summary>
+                                <div id="menu1" class="tab-pane" [ngClass]="{ 'active':activeTab==='Summary'}">
+                                        <app-challenge-summary [timelines]="posts | groupBy:'month'"></app-challenge-summary>
                                 </div>
                         </div>
                 </div>

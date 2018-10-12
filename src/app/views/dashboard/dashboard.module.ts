@@ -7,7 +7,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { ChallengeComponent, ChallengeDetailComponent,PostComponent, PostEditorComponent, TimelineComponent, CalendarSliderComponent, ChallengeSummaryComponent } from '@app/shared';
-
+import {GroupByPipe} from '@app/shared'
 @NgModule({
   imports: [
     FormsModule,
@@ -25,6 +25,10 @@ import { ChallengeComponent, ChallengeDetailComponent,PostComponent, PostEditorC
     PostComponent,
     PostEditorComponent,
     CalendarSliderComponent,
-    ChallengeSummaryComponent ]
+    ChallengeSummaryComponent,
+    GroupByPipe ],
+  providers: [
+    
+  ]
 })
 export class DashboardModule { }

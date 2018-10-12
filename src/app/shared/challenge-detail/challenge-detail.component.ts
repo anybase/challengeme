@@ -22,18 +22,10 @@ const query = (s,a,o={optional:true})=>q(s,a,o);
       style({ opacity:0 }),
       animate('1000ms ease-in-out', style({ opacity:1 }))
     ]),
-     transition(':leave', [
-      style({ opacity:1 }),
-      animate('1000ms ease-in-out', style({ opacity:0 }))]),
   ])
  ]
 })
 export class ChallengeDetailComponent implements OnInit {
-  name = 'Angular 6';
-  content = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae 
-  ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, 
-  ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam 
-  quisquam, quae, temporibus dolores porro doloribus.`;
   private _posts: Post[];
   post: Post;
   get posts(): Post[] {
@@ -47,10 +39,5 @@ export class ChallengeDetailComponent implements OnInit {
   constructor() { }
   ngOnInit() {
     this.post = new Post();
-  }
-  submittedPost(submittedPost: Post){
-  var newPostObj = {...submittedPost};
-  submittedPost.content = "";
-  this.posts.unshift(newPostObj);
   }
 }

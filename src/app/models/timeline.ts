@@ -1,5 +1,5 @@
-import {TimelineItem} from './timelineItem'
+import {Post} from './post'
 export class Timeline {
-    month: string;
-    posts: TimelineItem[]
+    key: string;
+    value: Post[]
   }

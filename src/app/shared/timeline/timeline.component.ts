@@ -18,6 +18,7 @@ export class TimelineComponent implements OnInit {
 
   @Input()
   set timelines(value: Timeline[]) {
+    console.log(value);
     this._timelines = value;
   }
 

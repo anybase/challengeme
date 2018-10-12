@@ -29,11 +29,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AuthService, AuthGuard } from '@app/services';
-import { NotificationComponent } from '@app/shared';
+import { AuthService, AuthGuard, ChallengeService, PostService } from '@app/services';
+import { NotificationComponent,  ShowAuthedDirective } from '@app/shared';
 import { NotificationModule } from '@progress/kendo-angular-notification';
-import { ShowAuthedDirective } from './shared/show-authed.directive';
-
 
 
 
@@ -61,7 +59,7 @@ import { ShowAuthedDirective } from './shared/show-authed.directive';
     FooterComponent,
     LoginComponent,
     NotificationComponent,
-    ShowAuthedDirective
+    ShowAuthedDirective,
     
 
 
@@ -70,7 +68,11 @@ import { ShowAuthedDirective } from './shared/show-authed.directive';
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
   },
-  AuthService, AuthGuard],
+  AuthService, 
+  AuthGuard,
+  ChallengeService,
+  PostService
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

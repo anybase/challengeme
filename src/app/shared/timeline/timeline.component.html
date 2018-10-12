@@ -1,9 +1,10 @@
 <div class="timeline">
     <div class="timeline__group" *ngFor="let timelineItem of timelines;">
-      <span class="timeline__yearmonth">{{timelineItem.month}}</span>
-      <div class="timeline__box" *ngFor="let post of timelineItem.posts;">
+      <span class="timeline__yearmonth">{{timelineItem.key}}</span>
+      <div class="timeline__box" *ngFor="let post of timelineItem.value;">
         <div class="timeline__date">
-          <span class="timeline__day">{{post.day}}</span>
+          <span class="timeline__day">{{post.createdDate | date:'d'}}</span>
+          <span class="timeline__time">{{post.createdDate | date:'hh:mm'}}</span>
         </div>
         <div class="timeline__post box-shadow">
           <div class="timeline__content">

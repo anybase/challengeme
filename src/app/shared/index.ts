@@ -4,6 +4,7 @@ export * from './post';
 export * from './post-editor';
 export * from './notification';
 export * from './timeline';
-export * from './calendar-slider'
-export * from './challenge-summary'
-export * from './show-authed.directive'
+export * from './calendar-slider';
+export * from './challenge-summary';
+export * from './show-authed.directive';
+export * from './groupBy'
