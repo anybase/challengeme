@@ -10,7 +10,7 @@ export class PostEditorComponent implements OnInit {
   constructor(private notificationService: NotificationService) { }
   private hideAfter: number = 2000;
   ngOnInit() {
-    this.post = new Post();
+    this.post = new Post(1,"","",1,"",new Date(),1);
   }
   post: Post
 

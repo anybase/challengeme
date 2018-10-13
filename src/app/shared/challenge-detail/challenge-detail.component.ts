@@ -38,6 +38,6 @@ export class ChallengeDetailComponent implements OnInit {
   }
   constructor() { }
   ngOnInit() {
-    this.post = new Post();
+    this.post = new Post(1,"","",1,"",new Date(),1);
   }
 }

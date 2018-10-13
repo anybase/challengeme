@@ -17,17 +17,6 @@ export class ChallengeService {
       { id: 4,caption: '28 Feb', startDate: new Date(2014, 4, 28), title: 'Status#4', content: this.content, endDate: new Date(2014, 5, 16) },
       { id: 5,caption: '28 Feb', startDate: new Date(2014, 5, 28), title: 'Status#5', content: this.content, endDate: new Date(2014, 6, 16) }
     ];
-   
-    this.timelines = [];
-    var timeline = {
-      month: "Oct",
-      posts: [{day: "1", content: this.content},
-      {day: "2", content: this.content},
-      {day: "3", content: this.content},
-      {day: "4", content: this.content}
-      ]
-    }
-    this.timelines.push(timeline);
    }
   ngOnInit(){
     
