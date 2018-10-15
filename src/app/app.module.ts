@@ -32,6 +32,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService, AuthGuard, ChallengeService, PostService } from '@app/services';
 import { NotificationComponent,  ShowAuthedDirective } from '@app/shared';
 import { NotificationModule } from '@progress/kendo-angular-notification';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 
@@ -48,7 +49,8 @@ import { NotificationModule } from '@progress/kendo-angular-notification';
     FormsModule,
     // To initialize AngularFire
     AngularFireModule.initializeApp(environment.firebase),
-    NotificationModule
+    NotificationModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     
     
   ],
