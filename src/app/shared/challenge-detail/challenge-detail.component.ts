@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Post} from '@app/models'
-import { trigger,style,transition,animate,query as q,keyframes,stagger, animateChild } from '@angular/animations';
-const query = (s,a,o={optional:true})=>q(s,a,o);
+import { trigger,style,transition,animate,query ,keyframes,stagger, animateChild } from '@angular/animations';
 @Component({
   selector: 'app-challenge-detail',
   templateUrl: './challenge-detail.component.html',

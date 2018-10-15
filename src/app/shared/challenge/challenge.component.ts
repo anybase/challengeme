@@ -21,8 +21,7 @@ export class ChallengeComponent implements OnInit {
   }
   @Output() selectedItem = new EventEmitter<Challenge>();
 
-  onEventClick(event: Event, selectedItem: Challenge) {
-    event.preventDefault();
+  onEventClick(selectedItem: Challenge) {
    this.selectedItem.emit(selectedItem);
   }
   ngOnInit() {

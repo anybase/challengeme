@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {DayItem} from '@app/models'
 import * as moment from 'moment'; // add this 1 of 4
-import { trigger,style,transition,animate,query as q,keyframes,stagger, animateChild } from '@angular/animations';
-const query = (s,a,o={optional:true})=>q(s,a,o);
+import { trigger,style,transition,animate,query,keyframes,stagger, animateChild } from '@angular/animations';
+// const query = (s,a,o={optional:true})=>q(s,a,o);
 
 @Component({
   selector: 'app-calendar-slider',

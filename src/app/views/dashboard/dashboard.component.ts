@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Challenge, Post, DayItem,Timeline } from '@app/models'
-import { trigger, style, transition, animate, query as q, keyframes, stagger, animateChild } from '@angular/animations';
+import { trigger, style, transition, animate, query, keyframes, stagger, animateChild } from '@angular/animations';
 import {ChallengeService, PostService} from '@app/services'
-const query = (s, a, o = { optional: true }) => q(s, a, o);
+// const query = (s, a, o = { optional: true }) => q(s, a, o);
 @Component({
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.scss'],
